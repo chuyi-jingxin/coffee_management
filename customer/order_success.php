@@ -13,7 +13,7 @@ $order_id = $_GET['orderid'] ?? 0;
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-    body {
+        body {
             background: #f8f9fa;
             font-family: 'Poppins', sans-serif;
             display: flex;
