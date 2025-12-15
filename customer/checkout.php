@@ -124,11 +124,13 @@ foreach ($cart as $item) {
                     </div>
 
                     <hr class="mb-4">
-                    <button type="submit" class="btn btn-success btn-lg btn-block">Confirm Order ✅</button>
-                    <a href="cart.php" class="btn btn-secondary btn-block">Back to Cart</a>
+                        <button type="submit" class="btn btn-success btn-pill btn-block shadow-sm"
+                            style="background: #00b894; border:none;">Confirm Order ✅</button>
+                        <a href="cart.php" class="btn btn-outline-secondary btn-pill btn-block">Back to Cart</a>
                 </form>
             </div>
         </div>
+    </div>
     </div>
 </body>
 
