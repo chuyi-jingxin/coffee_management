@@ -21,7 +21,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'remove' && isset($_GET['id']))
 $cart = $_SESSION['cart'] ?? [];
 $grand_total = 0;
 ?>
-// Code in here (Thu Hoai)
+// THU HOÀI
 <!DOCTYPE html>
 <html lang="en">
 

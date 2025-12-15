@@ -21,7 +21,7 @@ foreach ($cart as $item) {
     $grand_total += $item['price'] * $item['quantity'];
 }
 ?>
-// Code in here (Thu Hoai)
+// THU HOÀI
 <!DOCTYPE html>
 <html lang="en">
 
