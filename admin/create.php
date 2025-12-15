@@ -183,8 +183,11 @@ mysqli_close($con);
                 <label class="ml-2 font-weight-bold">Image</label>
                 <input type="file" name="image" accept=".jpg,.jpeg,.png" class="form-control-file ml-2">
             </div>
-            <button type="submit" class="btn btn-success">Add</button>
-            <a href="../home.php" class="btn btn-secondary">Back</a>
+            
+            <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success btn-pill mr-2 shadow-sm">Add Product</button>
+                    <a href="../home.php" class="btn btn-outline-secondary btn-pill">Cancel</a>
+            </div>
         </form>
     </div>
 </body>
