@@ -132,9 +132,9 @@ $result = mysqli_query($con, $query);
                         </td>
 
                         <td>
-                            <a href="order_detail.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-info text-white">View
-                                Items</a>
-
+                           <a href="order_detail.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-info btn-pill">
+                                        <i class="fas fa-eye"></i> View
+                            </a>
                             <?php if ($row['status'] == 'Pending'): ?>
                                 <span class="mx-1">|</span>
 
