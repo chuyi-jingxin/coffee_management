@@ -40,3 +40,35 @@ if (!$product) {
     die("The product does not exist!");
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><?= htmlspecialchars($product['name']) ?></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body { background: #f8f9fa; }
+        .container { background: #fff; padding: 30px; margin-top: 50px; border-radius: 8px; }
+        .detail-img { 
+            width: 100%; 
+            max-width: 400px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .price-tag { color: #d9534f; font-size: 24px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <img src="../<?= htmlspecialchars($product['image'] ?: 'assets/img/no-image.png') ?>" 
+                     class="detail-img" alt="Product Image">
+            </div>
+
+            
+        </div>
+    </div>
+</body>
+</html>
