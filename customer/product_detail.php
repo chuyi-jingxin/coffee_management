@@ -19,3 +19,24 @@ if (!isset($_SESSION['username']) && isset($_COOKIE['remember_me'])) {
     }
     mysqli_stmt_close($stmt_find);
 }
+
+// KIỂM TRA ĐĂNG NHẬP
+if (!isset($_SESSION['username'])) {
+    header('location:../auth/login.php');
+    exit();
+}
+
+// LẤY ID SẢN PHẨM
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+// TRUY VẤN SẢN PHẨM
+$stmt = mysqli_prepare($con, "SELECT * FROM products WHERE id = ?");
+mysqli_stmt_bind_param($stmt, "i", $id);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$product = mysqli_fetch_assoc($result);
+
+if (!$product) {
+    die("The product does not exist!");
+}
+?>
