@@ -25,3 +25,7 @@ if (isset($_POST['update_status'])) {
     exit();
 }
 
+// 3. LẤY DANH SÁCH ĐƠN HÀNG (Mới nhất lên đầu)
+$query = "SELECT * FROM orders ORDER BY created_at DESC";
+$result = mysqli_query($con, $query);
+?>
