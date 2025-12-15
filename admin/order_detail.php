@@ -66,6 +66,9 @@ $result_items = mysqli_query($con, $query_items);
             object-fit: cover;
             border-radius: 15px;
         }
+        .btn-pill {
+            border-radius: 50px;
+        }
     </style>
 </head>
 
