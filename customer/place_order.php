@@ -51,10 +51,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mysqli_stmt_bind_param($stmt_item, "iiid", $order_id, $product_id, $qty, $price);
             mysqli_stmt_execute($stmt_item);
         }
-        
+        mysqli_stmt_close($stmt_item);
+
+        // 4. XÓA GIỎ HÀNG SAU KHI ĐẶT THÀNH CÔNG
+        unset($_SESSION['cart']);
+
+        // 5. CHUYỂN HƯỚNG ĐẾN TRANG THÔNG BÁO
+        header("location: order_success.php?orderid=$order_id");
+        exit();
 
     } else {
-        
+        echo "Error: " . mysqli_error($con);
     }
 }
 mysqli_close($con);
