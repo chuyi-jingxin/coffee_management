@@ -118,6 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 mysqli_close($con);
 ?>
 
+// code in here (Nhat)
 <!DOCTYPE html>
 <html lang="vi">
 
