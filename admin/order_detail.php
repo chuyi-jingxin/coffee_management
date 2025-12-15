@@ -51,7 +51,7 @@ $result_items = mysqli_query($con, $query_items);
             height: 100%;
             border: none;
         }
-        
+
         .detail-header {
             border-bottom: 2px solid #f1f2f6;
             padding-bottom: 15px;
@@ -61,10 +61,10 @@ $result_items = mysqli_query($con, $query_items);
         }
 
         .thumb-img {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             object-fit: cover;
-            border-radius: 4px;
+            border-radius: 15px;
         }
     </style>
 </head>
