@@ -29,3 +29,28 @@ if (isset($_POST['update_status'])) {
 $query = "SELECT * FROM orders ORDER BY created_at DESC";
 $result = mysqli_query($con, $query);
 ?>
+// Code in here (Ly)
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Order Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #f8f9fa;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>
