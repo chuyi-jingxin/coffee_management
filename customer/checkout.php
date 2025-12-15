@@ -73,33 +73,37 @@ foreach ($cart as $item) {
 
 <body>
     <div class="container">
-        <h2 class="mb-4">Checkout 📝</h2>
+        <div class="checkout-card">
+            <h2 class="mb-4 font-weight-bold" style="color: #6c5ce7;">Checkout</h2>
 
         <div class="row">
-            <div class="col-md-6">
-                <h4 class="text-info">Order Summary</h4>
+            <div class="col-md-6 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Your Cart</span>
+                        <span class="badge badge-secondary badge-pill"><?= count($cart) ?></span>
+                </h4>
                 <ul class="list-group mb-3">
-                    <?php foreach ($cart as $item): ?>
-                        <li class="list-group-item d-flex justify-content-between lh-condensed">
-                            <div>
-                                <h6 class="my-0"><?= htmlspecialchars($item['name']) ?></h6>
-                                <small class="text-muted">Quantity: <?= $item['quantity'] ?></small>
-                            </div>
-                            <span class="text-muted">
-                                <?= number_format($item['price'] * $item['quantity'], 0, ',', '.') ?>
-                            </span>
-                        </li>
+                        <?php foreach ($cart as $item): ?>
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h6 class="my-0 font-weight-bold"><?= htmlspecialchars($item['name']) ?></h6>
+                                    <small class="text-muted">Qty: <?= $item['quantity'] ?></small>
+                                </div>
+                                <span
+                                    class="text-muted"><?= number_format($item['price'] * $item['quantity'], 0, ',', '.') ?></span>
+                            </li>
                     <?php endforeach; ?>
 
-                    <li class="list-group-item d-flex justify-content-between bg-light">
-                        <span class="text-success font-weight-bold">Total (VND)</span>
-                        <strong class="text-success"><?= number_format($grand_total, 0, ',', '.') ?></strong>
+                    <li class="list-group-item d-flex justify-content-between bg-light rounded mt-2 p-3">
+                            <span class="text-success font-weight-bold">Total (VND)</span>
+                            <strong class="text-success"
+                                style="font-size: 1.2rem;"><?= number_format($grand_total, 0, ',', '.') ?></strong>
                     </li>
                 </ul>
             </div>
 
-            <div class="col-md-6">
-                <h4 class="text-primary">Delivery Information</h4>
+            <div class="col-md-6 order-md-1">
+                <h4 class="mb-3">Delivery Address</h4>
 
                 <form action="place_order.php" method="POST">
                     <div class="form-group">
