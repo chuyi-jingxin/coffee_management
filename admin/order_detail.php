@@ -51,6 +51,14 @@ $result_items = mysqli_query($con, $query_items);
             height: 100%;
             border: none;
         }
+        
+        .detail-header {
+            border-bottom: 2px solid #f1f2f6;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #6c5ce7;
+        }
 
         .thumb-img {
             width: 50px;
