@@ -66,3 +66,31 @@ if (!$product) {
     mysqli_close($con); // Dọn dẹp $con
     die("Product not found.");
 }
+
+// Cập nhật sản phẩm
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = trim($_POST['name']);
+    $price = (float) $_POST['price'];
+    $status = trim($_POST['status']);
+    $image = $product['image']; // Giữ ảnh cũ nếu không upload mới
+
+    // Nếu có file upload
+    if (!empty($_FILES['image']['name'])) {
+        $targetDir = "../uploads/";
+
+        if (!is_dir($targetDir))
+            mkdir($targetDir, 0755, true);
+
+        $fileName = basename($_FILES["image"]["name"]);
+
+        // Đường dẫn vật lý: ../uploads/123_anh.jpg
+        $targetFile = $targetDir . time() . '_' . $fileName;
+
+        $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        $allowed = ['jpg', 'jpeg', 'png'];
+
+        if (in_array($fileType, $allowed) && move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
+            $image = "uploads/" . time() . '_' . $fileName;
+        }
+    }
+}
