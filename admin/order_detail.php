@@ -93,18 +93,19 @@ $result_items = mysqli_query($con, $query_items);
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <h5 class="text-primary">Items List</h5>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Product</th>
-                            <th>Qty</th>
-                            <th>Price</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
+            <div class="col-md-7">
+                <div class="detail-card">
+                    <h5 class="detail-header"><i class="fas fa-shopping-basket mr-2"></i> Items List</h5>
+                    <div class="table-responsive">
+                        <table class="table table-borderless">
+                            <thead class="text-muted border-bottom">
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Qty</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
                     <tbody>
                         <?php while ($item = mysqli_fetch_assoc($result_items)): ?>
                             <tr>
