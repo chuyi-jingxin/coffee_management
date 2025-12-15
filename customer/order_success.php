@@ -55,8 +55,7 @@ $order_id = $_GET['orderid'] ?? 0;
             Order ID: <strong>#<?= htmlspecialchars($order_id) ?></strong>
         </div>
         <p class="small text-muted mb-4">We will contact you soon to confirm.</p>
-        <a href="../home.php" class="btn btn-primary btn-pill shadow-sm" style="background: #6c5ce7; border: none;">Back
-            to Home</a>
+        <a href="../home.php" class="btn btn-primary btn-pill shadow-sm" style="background: #6c5ce7; border: none;">Back to Home</a>
     </div>
 </body>
 
