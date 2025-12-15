@@ -104,6 +104,12 @@ $result = mysqli_query($con, $query); // Object - False
             box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.1);
         }
 
+        .card-img-top {
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
         
     </style>
 </head>
