@@ -110,18 +110,22 @@ $grand_total = 0;
                         </tr>
                     <?php endforeach; ?>
 
-                    <tr>
-                        <td colspan="4" class="text-right"><strong>Grand Total:</strong></td>
-                        <td colspan="2" class="text-danger">
-                            <strong><?= number_format($grand_total, 0, ',', '.') ?> VND</strong>
+                    <tr class="border-top">
+                        <td colspan="4" class="text-right pt-4">
+                            <h5>Grand Total:</h5>
+                        </td>
+                        <td colspan="2" class="text-right pt-4">
+                            <h3 class="text-warning font-weight-bold">
+                                <?= number_format($grand_total, 0, ',', '.') ?> VND</h3>
                         </td>
                     </tr>
                 </tbody>
             </table>
 
-            <div class="d-flex justify-content-between">
-                <a href="../home.php" class="btn btn-secondary">← Continue Shopping</a>
-                <a href="checkout.php" class="btn btn-success btn-lg">Proceed to Checkout →</a>
+            <div class="d-flex justify-content-between mt-4">
+                    <a href="../home.php" class="btn btn-outline-secondary btn-pill">← Continue Shopping</a>
+                    <a href="checkout.php" class="btn btn-success btn-pill shadow-sm"
+                        style="background-color: #00b894; border: none;">Proceed to Checkout →</a>
             </div>
 
         <?php else: ?>
