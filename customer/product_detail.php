@@ -49,75 +49,97 @@ if (!$product) {
 <head>
     <meta charset="UTF-8">
     <title><?= htmlspecialchars($product['name']) ?></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
             background: #f8f9fa;
+            font-family: 'Poppins', sans-serif;
         }
 
-        .container {
+        .product-container {
             background: #fff;
-            padding: 30px;
+            padding: 40px;
             margin-top: 50px;
-            border-radius: 8px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
         }
 
         .detail-img {
             width: 100%;
-            max-width: 400px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
         }
 
         .price-tag {
-            color: #d9534f;
-            font-size: 24px;
-            font-weight: bold;
+            color: #fdcb6e;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .btn-pill {
+            border-radius: 50px;
+            font-weight: 600;
+            padding: 12px 0;
+        }
+
+        .form-control-qty {
+            border-radius: 50px;
+            text-align: center;
+            border: 2px solid #eee;
+            height: 50px;
+            font-size: 1.2rem;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 text-center">
-                <img src="../<?= htmlspecialchars($product['image'] ?: 'assets/img/no-image.png') ?>" class="detail-img"
-                    alt="Product Image">
-            </div>
+        <div class="product-container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <img src="../<?= htmlspecialchars($product['image'] ?: 'assets/img/no-image.png') ?>"
+                        class="detail-img" alt="Product Image">
+                </div>
 
-            <div class="col-md-6">
-                <h2 class="mb-3"><?= htmlspecialchars($product['name']) ?></h2>
-                <p class="price-tag"><?= number_format($product['price'], 0, ',', '.') ?> VND</p>
+                <div class="col-md-6 pl-md-5">
+                    <h2 class="font-weight-bold mb-3"><?= htmlspecialchars($product['name']) ?></h2>
+                    <p class="price-tag"><?= number_format($product['price'], 0, ',', '.') ?> <small
+                            style="font-size: 1rem; color: #aaa;">VND</small></p>
 
-                <p><strong>Status:</strong>
-                    <span class="badge badge-<?= $product['status'] == 'In Stock' ? 'success' : 'secondary' ?>">
-                        <?= $product['status'] ?>
-                    </span>
-                </p>
-                <hr>
-                <p>Description...[update later]</p>
-
-                <form action="cart_add.php" method="POST">
-
-                    <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
-
-                    <div class="form-group d-flex align-items-center">
-                        <label class="mr-2 mb-0"><strong>Quantity:</strong></label>
-                        <input type="number" name="quantity" value="1" min="1" max="10" class="form-control"
-                            style="width: 80px;">
+                    <div class="mb-4">
+                        <span
+                            class="badge badge-<?= $product['status'] == 'In Stock' ? 'success' : 'secondary' ?> p-2 rounded-pill px-3">
+                            <?= $product['status'] ?>
+                        </span>
                     </div>
 
-                    <?php if ($product['status'] == 'In Stock'): ?>
-                        <button type="submit" class="btn btn-warning btn-lg btn-block text-white">
-                            Add to Cart 🛒
-                        </button>
-                    <?php else: ?>
-                        <button type="button" class="btn btn-secondary btn-lg btn-block" disabled>Sold Out</button>
-                    <?php endif; ?>
-                </form>
+                    <p class="text-muted">Enjoy the finest taste of our coffee, brewed to perfection just for you.</p>
+                    <hr class="my-4">
 
-                <br>
-                <a href="../home.php" class="btn btn-outline-secondary">Back to Menu</a>
+                    <form action="cart_add.php" method="POST">
+                        <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+
+                        <div class="form-group mb-4">
+                            <label class="font-weight-bold text-muted">Quantity</label>
+                            <input type="number" name="quantity" value="1" min="1" max="10"
+                                class="form-control form-control-qty w-50">
+                        </div>
+
+                        <?php if ($product['status'] == 'In Stock'): ?>
+                            <button type="submit" class="btn btn-warning btn-pill btn-block text-white shadow-sm"
+                                style="background-color: #fdcb6e; border: none;">
+                                Add to Cart <i class="fas fa-shopping-cart ml-2"></i>
+                            </button>
+                        <?php else: ?>
+                            <button type="button" class="btn btn-secondary btn-pill btn-block" disabled>Sold Out</button>
+                        <?php endif; ?>
+                    </form>
+
+                    <a href="../home.php" class="btn btn-outline-secondary btn-pill btn-block mt-3">Back to Menu</a>
+                </div>
             </div>
         </div>
     </div>

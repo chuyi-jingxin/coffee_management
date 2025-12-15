@@ -121,58 +121,101 @@ mysqli_close($con);
 // HOÀNG NHẬT
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <title>Edit Product</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        .container {
-            margin-top: 30px;
+        body {
+            background: #f8f9fa;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             max-width: 600px;
+            margin: 50px auto;
+        }
+
+        .form-control {
+            border-radius: 50px;
+            padding: 20px;
+            border: 1px solid #eee;
+            background: #fcfcfc;
+        }
+
+        .form-control:focus {
+            border-color: #6c5ce7;
+            box-shadow: none;
+            background: #fff;
+        }
+
+        .btn-pill {
+            border-radius: 50px;
+            font-weight: 600;
+            padding: 10px 30px;
         }
 
         img.current-img {
-            max-width: 120px;
-            border-radius: 4px;
-            margin-top: 8px;
+            border-radius: 15px;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            color: #6c5ce7;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
         }
     </style>
 </head>
 
 <body>
-        <div class="container">
-        <h3 class="text-primary mb-4">Edit Product (ID: <?= $id ?>)</h3>
+    <div class="container">
+        <div class="form-card">
+            <h3>Edit Product ✏️</h3>
 
-        <form method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label>Name:</label>
-                <input type="text" name="name" class="form-control" required
-                    value="<?= htmlspecialchars($product['name']) ?>">
-            </div>
-            <div class="form-group">
-                <label>Price (VND):</label>
-                <input type="number" name="price" class="form-control" min="0" step="1000" required
-                    value="<?= htmlspecialchars($product['price']) ?>">
-            </div>
-            <div class="form-group">
-                <label>Status:</label>
-                <select name="status" class="form-control" required>
-                    <option value="In Stock" <?= $product['status'] == 'In Stock' ? 'selected' : '' ?>>In Stock</option>
-                    <option value="Out of Stock" <?= $product['status'] == 'Out of Stock' ? 'selected' : '' ?>>Out of Stock
-                    </option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Product Image:</label><br>
-                <input type="file" name="image" accept=".jpg,.jpeg,.png" class="form-control-file">
-                <?php if ($product['image']): ?>
-                    <img class="current-img" src="<?= htmlspecialchars($product['image']) ?>" alt="Current Image">
-                <?php endif; ?>
-            </div>
-            <button type="submit" class="btn btn-primary">Save Changes</button>
-            <a href="../home.php" class="btn btn-secondary">Back</a>
-        </form>
+            <form method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="ml-2 font-weight-bold">Name</label>
+                    <input type="text" name="name" class="form-control" required
+                        value="<?= htmlspecialchars($product['name']) ?>">
+                </div>
+                <div class="form-group">
+                    <label class="ml-2 font-weight-bold">Price</label>
+                    <input type="number" name="price" class="form-control" min="0" step="1000" required
+                        value="<?= htmlspecialchars($product['price']) ?>">
+                </div>
+                <div class="form-group">
+                    <label class="ml-2 font-weight-bold">Status</label>
+                    <select name="status" class="form-control" style="height: auto;">
+                        <option value="In Stock" <?= $product['status'] == 'In Stock' ? 'selected' : '' ?>>In Stock
+                        </option>
+                        <option value="Out of Stock" <?= $product['status'] == 'Out of Stock' ? 'selected' : '' ?>>Out of
+                            Stock</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="ml-2 font-weight-bold">Image</label><br>
+                    <input type="file" name="image" accept=".jpg,.jpeg,.png" class="ml-2">
+                    <div class="mt-2 text-center">
+                        <?php if ($product['image']): ?>
+                            <img class="current-img" src="../<?= htmlspecialchars($product['image']) ?>" alt="Current Image"
+                                width="100">
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary btn-pill mr-2 shadow-sm">Save Changes</button>
+                    <a href="../home.php" class="btn btn-outline-secondary btn-pill">Back</a>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 
