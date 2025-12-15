@@ -45,3 +45,9 @@ if ($_SESSION['role'] !== 'admin') {
     exit();
 }
 
+// Lấy ID sản phẩm và validate
+$id = (int) ($_GET['id'] ?? 0); // lấy id từ url, ép kiểu để bảo mật
+if ($id <= 0) {
+    mysqli_close($con); // Dọn dẹp $con
+    die("Invalid product ID.");
+}
