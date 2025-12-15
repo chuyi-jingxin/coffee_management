@@ -27,7 +27,7 @@ $query_items = "SELECT oi.*, p.name as product_name, p.image
                 WHERE oi.order_id = $order_id";
 $result_items = mysqli_query($con, $query_items);
 ?>
-
+// Code in here (Ly)
 <!DOCTYPE html>
 <html lang="en">
 
