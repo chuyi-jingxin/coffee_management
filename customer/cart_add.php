@@ -28,7 +28,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($product) {
         // 4. Logic Giỏ hàng (Session)
         
-        
+        // Nếu giỏ hàng chưa tồn tại, tạo mới
+        if (!isset($_SESSION['cart'])) {
+            $_SESSION['cart'] = [];
+        }
 
         
 
