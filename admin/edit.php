@@ -140,7 +140,35 @@ mysqli_close($con);
 </head>
 
 <body>
+        <div class="container">
+        <h3 class="text-primary mb-4">Edit Product (ID: <?= $id ?>)</h3>
 
+        <form method="POST" enctype="multipart/form-data">
+            
+            <div class="form-group">
+                <label>Price (VND):</label>
+                <input type="number" name="price" class="form-control" min="0" step="1000" required
+                    value="<?= htmlspecialchars($product['price']) ?>">
+            </div>
+            <div class="form-group">
+                <label>Status:</label>
+                <select name="status" class="form-control" required>
+                    <option value="In Stock" <?= $product['status'] == 'In Stock' ? 'selected' : '' ?>>In Stock</option>
+                    <option value="Out of Stock" <?= $product['status'] == 'Out of Stock' ? 'selected' : '' ?>>Out of Stock
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Product Image:</label><br>
+                <input type="file" name="image" accept=".jpg,.jpeg,.png" class="form-control-file">
+                <?php if ($product['image']): ?>
+                    <img class="current-img" src="<?= htmlspecialchars($product['image']) ?>" alt="Current Image">
+                <?php endif; ?>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a href="../home.php" class="btn btn-secondary">Back</a>
+        </form>
+    </div>
 </body>
 
 </html>
