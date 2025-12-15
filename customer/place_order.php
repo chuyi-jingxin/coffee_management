@@ -34,7 +34,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_stmt_bind_param($stmt, "isssd", $user_id, $name, $phone, $address, $total_amount);
     
     if (mysqli_stmt_execute($stmt)) {
-        
+        // Lấy ID của đơn hàng vừa tạo (Order ID)
+        $order_id = mysqli_insert_id($con);
+        mysqli_stmt_close($stmt);
+
+        // 3. LƯU CHI TIẾT ĐƠN HÀNG (INSERT vào bảng order_items)
+        // Dùng vòng lặp để lưu từng món
         
         }
         
