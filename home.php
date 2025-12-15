@@ -149,6 +149,74 @@ $result = mysqli_query($con, $query); // Object - False
             background-color: #00b894;
             color: white;
         }
+
+        /* Xanh Mint đậm */
+        .badge-outstock {
+            background-color: #ff7675;
+            color: white;
+        }
+
+        /* Hồng cam */
+
+        /* --- CÁC NÚT BẤM (PASTEL STYLE) --- */
+        /* Nút chung */
+        .btn {
+            border-radius: 50px;
+            /* Bo tròn viên thuốc */
+            font-weight: 600;
+            border: none;
+            padding: 8px 15px;
+            transition: 0.3s;
+        }
+
+        /* Nút View Details (Khách) */
+        .btn-pastel-view {
+            background-color: #81ecec;
+            /* Xanh ngọc nhạt */
+            color: #00897b;
+            /* Chữ xanh đậm */
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .btn-pastel-view:hover {
+            background-color: #4dd0e1;
+            color: #fff;
+            transform: scale(1.02);
+        }
+
+        /* Nút Edit (Admin) */
+        .btn-pastel-edit {
+            background-color: #a29bfe;
+            /* Tím nhạt */
+            color: #fff;
+        }
+
+        .btn-pastel-edit:hover {
+            background-color: #6c5ce7;
+        }
+
+        /* Nút Delete (Admin) */
+        .btn-pastel-del {
+            background-color: #ff7675;
+            /* Hồng đỏ nhạt */
+            color: #fff;
+        }
+
+        .btn-pastel-del:hover {
+            background-color: #d63031;
+        }
+
+        /* Nút Cart trên Header */
+        .btn-pastel-cart {
+            background-color: #ffeaa7;
+            /* Vàng kem */
+            color: #d35400;
+        }
+
+        .btn-pastel-cart:hover {
+            background-color: #fdcb6e;
+        }
     </style>
 </head>
 
