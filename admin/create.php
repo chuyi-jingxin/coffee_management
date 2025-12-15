@@ -180,8 +180,8 @@ mysqli_close($con);
                 </select>
             </div>
             <div class="form-group">
-                <label>Add Image:</label>
-                <input type="file" name="image" accept=".jpg,.jpeg,.png" class="form-control-file">
+                <label class="ml-2 font-weight-bold">Image</label>
+                <input type="file" name="image" accept=".jpg,.jpeg,.png" class="form-control-file ml-2">
             </div>
             <button type="submit" class="btn btn-success">Add</button>
             <a href="../home.php" class="btn btn-secondary">Back</a>
