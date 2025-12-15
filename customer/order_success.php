@@ -24,7 +24,10 @@ $order_id = $_GET['orderid'] ?? 0;
             text-align: center;
         }
 
-        
+        .success-icon {
+            font-size: 80px;
+            color: #28a745;
+        }
     </style>
 </head>
 
