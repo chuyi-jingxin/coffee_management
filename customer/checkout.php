@@ -83,21 +83,21 @@ foreach ($cart as $item) {
                         <span class="badge badge-secondary badge-pill"><?= count($cart) ?></span>
                 </h4>
                 <ul class="list-group mb-3">
-                    <?php foreach ($cart as $item): ?>
-                        <li class="list-group-item d-flex justify-content-between lh-condensed">
-                            <div>
-                                <h6 class="my-0"><?= htmlspecialchars($item['name']) ?></h6>
-                                <small class="text-muted">Quantity: <?= $item['quantity'] ?></small>
-                            </div>
-                            <span class="text-muted">
-                                <?= number_format($item['price'] * $item['quantity'], 0, ',', '.') ?>
-                            </span>
-                        </li>
+                        <?php foreach ($cart as $item): ?>
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h6 class="my-0 font-weight-bold"><?= htmlspecialchars($item['name']) ?></h6>
+                                    <small class="text-muted">Qty: <?= $item['quantity'] ?></small>
+                                </div>
+                                <span
+                                    class="text-muted"><?= number_format($item['price'] * $item['quantity'], 0, ',', '.') ?></span>
+                            </li>
                     <?php endforeach; ?>
 
-                    <li class="list-group-item d-flex justify-content-between bg-light">
-                        <span class="text-success font-weight-bold">Total (VND)</span>
-                        <strong class="text-success"><?= number_format($grand_total, 0, ',', '.') ?></strong>
+                    <li class="list-group-item d-flex justify-content-between bg-light rounded mt-2 p-3">
+                            <span class="text-success font-weight-bold">Total (VND)</span>
+                            <strong class="text-success"
+                                style="font-size: 1.2rem;"><?= number_format($grand_total, 0, ',', '.') ?></strong>
                     </li>
                 </ul>
             </div>
