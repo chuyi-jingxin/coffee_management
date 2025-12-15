@@ -88,7 +88,12 @@ $grand_total = 0;
                         </tr>
                     <?php endforeach; ?>
 
-                    
+                    <tr>
+                        <td colspan="4" class="text-right"><strong>Grand Total:</strong></td>
+                        <td colspan="2" class="text-danger">
+                            <strong><?= number_format($grand_total, 0, ',', '.') ?> VND</strong>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 
