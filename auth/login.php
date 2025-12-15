@@ -31,7 +31,9 @@
                     </div>
                 <?php endif; ?>
 
-                
+                <div class="form-group">
+                    <input type="text" name="user" class="form-control rounded-pill" placeholder="Username" required>
+                </div>
 
                 <div class="form-group">
                     <input type="password" name="password" class="form-control rounded-pill" placeholder="Password"
