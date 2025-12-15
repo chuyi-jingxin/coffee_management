@@ -49,7 +49,9 @@ if (!$product) {
 <head>
     <meta charset="UTF-8">
     <title><?= htmlspecialchars($product['name']) ?></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
             background: #f8f9fa;
@@ -82,7 +84,7 @@ if (!$product) {
             font-weight: 600;
             padding: 12px 0;
         }
-        
+
         .form-control-qty {
             border-radius: 50px;
             text-align: center;
@@ -107,7 +109,7 @@ if (!$product) {
                     <p class="price-tag"><?= number_format($product['price'], 0, ',', '.') ?> <small
                             style="font-size: 1rem; color: #aaa;">VND</small></p>
 
-            <div class="mb-4">
+                    <div class="mb-4">
                         <span
                             class="badge badge-<?= $product['status'] == 'In Stock' ? 'success' : 'secondary' ?> p-2 rounded-pill px-3">
                             <?= $product['status'] ?>
@@ -137,6 +139,7 @@ if (!$product) {
                     </form>
 
                     <a href="../home.php" class="btn btn-outline-secondary btn-pill btn-block mt-3">Back to Menu</a>
+                </div>
             </div>
         </div>
     </div>
