@@ -33,9 +33,7 @@
                         placeholder="Choose Password" required>
                 </div>
 
-                <button type="submit" class="btn btn-auth mt-3">
-                    SIGN UP <i class="fas fa-user-check ml-2"></i>
-                </button>
+                
 
             </form>
 
