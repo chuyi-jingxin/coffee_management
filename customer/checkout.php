@@ -107,14 +107,14 @@ foreach ($cart as $item) {
 
                 <form action="place_order.php" method="POST">
                     <div class="form-group">
-                        <label>Receiver Name:</label>
-                        <input type="text" name="customer_name" class="form-control" required
-                            placeholder="Enter your full name">
+                            <label class="ml-2 font-weight-bold text-muted">Full Name</label>
+                            <input type="text" name="customer_name" class="form-control" required
+                                placeholder="Ex: Nguyen Van A">
                     </div>
 
                     <div class="form-group">
-                        <label>Phone Number:</label>
-                        <input type="text" name="phone" class="form-control" required placeholder="09xxxxxxxx">
+                            <label class="ml-2 font-weight-bold text-muted">Phone Number</label>
+                            <input type="text" name="phone" class="form-control" required placeholder="Ex: 0912345678">
                     </div>
 
                     <div class="form-group">
