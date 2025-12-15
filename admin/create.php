@@ -168,8 +168,9 @@ mysqli_close($con);
                 <input type="text" name="name" class="form-control" required placeholder="Ex: Cappuccino">
             </div>
             <div class="form-group">
-                <label>Price (VND):</label>
-                <input type="number" name="price" class="form-control" required min="0" step="1000">
+                <label class="ml-2 font-weight-bold">Price (VND)</label>
+                <input type="number" name="price" class="form-control" required min="0" step="1000"
+                        placeholder="Ex: 50000">
             </div>
             <div class="form-group">
                 <label>Status:</label>
