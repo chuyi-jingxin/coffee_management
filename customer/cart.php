@@ -97,7 +97,10 @@ $grand_total = 0;
                 </tbody>
             </table>
 
-            
+            <div class="d-flex justify-content-between">
+                <a href="../home.php" class="btn btn-secondary">← Continue Shopping</a>
+                <a href="checkout.php" class="btn btn-success btn-lg">Proceed to Checkout →</a>
+            </div>
 
         
     </div>
