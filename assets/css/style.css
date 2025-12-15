@@ -8,7 +8,6 @@ body {
     background-position: center;      /* Căn giữa ảnh */
     background-repeat: no-repeat;     /* Không lặp lại */
     background-attachment: fixed;     /* Cố định ảnh khi cuộn */
-    background-color:pink;
     
     /* Fallback color (nếu ảnh lỗi thì hiện màu xám) */
     background-color: #f8f9fa; 
@@ -26,7 +25,7 @@ body {
 .auth-wrapper {
     width: 100%;
     max-width: 420px;
-
+    padding: 15px;
 }
 
 /* --- CARD FORM (Khung trắng nổi bật trên nền ảnh) --- */
