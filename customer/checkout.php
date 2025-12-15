@@ -63,7 +63,10 @@ foreach ($cart as $item) {
                         </li>
                     <?php endforeach; ?>
 
-                    
+                    <li class="list-group-item d-flex justify-content-between bg-light">
+                        <span class="text-success font-weight-bold">Total (VND)</span>
+                        <strong class="text-success"><?= number_format($grand_total, 0, ',', '.') ?></strong>
+                    </li>
                 </ul>
             </div>
 
