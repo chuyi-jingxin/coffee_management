@@ -81,16 +81,15 @@ $result_items = mysqli_query($con, $query_items);
         </div>
 
         <div class="row">
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    <div class="card-header bg-info text-white">Customer Info</div>
-                    <div class="card-body">
-                        <p><strong>Name:</strong> <?= htmlspecialchars($order['customer_name']) ?></p>
-                        <p><strong>Phone:</strong> <?= htmlspecialchars($order['phone']) ?></p>
-                        <p><strong>Address:</strong> <?= htmlspecialchars($order['address']) ?></p>
-                        <p><strong>Order Date:</strong> <?= $order['created_at'] ?></p>
-                        <p><strong>Status:</strong> <span class="badge badge-primary"><?= $order['status'] ?></span></p>
-                    </div>
+            <div class="col-md-5 mb-4">
+                <div class="detail-card">
+                    <h5 class="detail-header"><i class="fas fa-user-circle mr-2"></i> Customer Info</h5>
+                    <p><strong>Name:</strong> <?= htmlspecialchars($order['customer_name']) ?></p>
+                    <p><strong>Phone:</strong> <?= htmlspecialchars($order['phone']) ?></p>
+                    <p><strong>Address:</strong> <?= htmlspecialchars($order['address']) ?></p>
+                    <p><strong>Date:</strong> <?= $order['created_at'] ?></p>
+                    <p><strong>Status:</strong> <span
+                            class="badge badge-info p-2 rounded"><?= $order['status'] ?></span></p>
                 </div>
             </div>
 
