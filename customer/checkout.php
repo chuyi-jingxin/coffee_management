@@ -85,7 +85,11 @@ foreach ($cart as $item) {
                         <input type="text" name="phone" class="form-control" required placeholder="09xxxxxxxx">
                     </div>
 
-                    
+                    <div class="form-group">
+                        <label>Shipping Address:</label>
+                        <textarea name="address" class="form-control" rows="3" required
+                            placeholder="Your delivery address..."></textarea>
+                    </div>
 
                     
                 </form>
