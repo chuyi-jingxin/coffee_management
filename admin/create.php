@@ -39,3 +39,19 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
+// Chỉ cho phép ADMIN truy cập.
+if ($_SESSION['role'] !== 'admin') {
+    header('location:../home.php?msg=no_permission');
+    exit();
+}
+
+$errorMessage = '';
+
+/* XỬ LÝ THÊM SẢN PHẨM */
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = trim($_POST['name']);
+    $price = (float) $_POST['price'];
+    $status = trim($_POST['status']);
+    $imagePath = '';
+
+} 
