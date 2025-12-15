@@ -107,18 +107,21 @@ $result_items = mysqli_query($con, $query_items);
                                 </tr>
                             </thead>
                     <tbody>
-                        <?php while ($item = mysqli_fetch_assoc($result_items)): ?>
-                            <tr>
-                                <td>
-                                    <img src="../<?= htmlspecialchars($item['image'] ?: 'assets/img/no-image.png') ?>"
-                                        class="thumb-img">
-                                </td>
-                                <td><?= htmlspecialchars($item['product_name']) ?></td>
-                                <td>x<?= $item['quantity'] ?></td>
-                                <td><?= number_format($item['price']) ?></td>
-                                <td><?= number_format($item['price'] * $item['quantity']) ?></td>
-                            </tr>
-                        <?php endwhile; ?>
+                                <?php while ($item = mysqli_fetch_assoc($result_items)): ?>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../<?= htmlspecialchars($item['image'] ?: 'assets/img/no-image.png') ?>"
+                                                    class="thumb-img mr-3">
+                                                <span><?= htmlspecialchars($item['product_name']) ?></span>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle">x<?= $item['quantity'] ?></td>
+                                        <td class="align-middle"><?= number_format($item['price']) ?></td>
+                                        <td class="align-middle font-weight-bold">
+                                            <?= number_format($item['price'] * $item['quantity']) ?></td>
+                                    </tr>
+                                <?php endwhile; ?>
 
                         <tr class="bg-light">
                             <td colspan="4" class="text-right"><strong>Grand Total:</strong></td>
