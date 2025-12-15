@@ -67,7 +67,23 @@ if (!$product) {
                      class="detail-img" alt="Product Image">
             </div>
 
-            
+            <div class="col-md-6">
+                <h2 class="mb-3"><?= htmlspecialchars($product['name']) ?></h2>
+                <p class="price-tag"><?= number_format($product['price'], 0, ',', '.') ?> VND</p>
+                
+                <p><strong>Status:</strong> 
+                    <span class="badge badge-<?= $product['status'] == 'In Stock' ? 'success' : 'secondary' ?>">
+                        <?= $product['status'] ?>
+                    </span>
+                </p>
+                <hr>
+                <p>Description...[update later]</p>
+                
+                
+
+                <br>
+                <a href="../home.php" class="btn btn-outline-secondary">Back to Menu</a>
+            </div>
         </div>
     </div>
 </body>
