@@ -113,3 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_stmt_close($stmt_update); // Dọn dẹp $stmt_update
     }
 }
+
+// Dòng này chỉ chạy khi vào trang (GET) hoặc khi POST bị lỗi
+mysqli_close($con);
+?>
