@@ -43,7 +43,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query_item = "INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)";
         $stmt_item = mysqli_prepare($con, $query_item);
 
-        ;
+        foreach ($cart as $product_id => $item) {
+            $price = $item['price'];
+            $qty = $item['quantity'];
+            
+            // 'iiid' -> int, int, int, double
+            mysqli_stmt_bind_param($stmt_item, "iiid", $order_id, $product_id, $qty, $price);
+            mysqli_stmt_execute($stmt_item);
         }
         
 
