@@ -9,7 +9,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
     exit();
 }
 
-
+$order_id = (int) ($_GET['id'] ?? 0);
 
 // 2. LẤY THÔNG TIN ĐƠN HÀNG (Người mua, địa chỉ...)
 $stmt = mysqli_prepare($con, "SELECT * FROM orders WHERE id = ?");
