@@ -123,17 +123,18 @@ $result_items = mysqli_query($con, $query_items);
                                     </tr>
                                 <?php endwhile; ?>
 
-                        <tr class="bg-light">
-                            <td colspan="4" class="text-right"><strong>Grand Total:</strong></td>
-                            <td class="text-danger font-weight-bold">
-                                <?= number_format($order['total_amount'], 0, ',', '.') ?> VND
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                        <tr class="border-top">
+                                    <td colspan="3" class="text-right"><strong>Grand Total:</strong></td>
+                                    <td class="text-danger font-weight-bold" style="font-size: 1.2rem;">
+                                        <?= number_format($order['total_amount'], 0, ',', '.') ?> VND
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+        </div>
 </body>
-
 </html>
