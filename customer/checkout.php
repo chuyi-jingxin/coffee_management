@@ -62,6 +62,12 @@ foreach ($cart as $item) {
             font-weight: 600;
             padding: 12px;
         }
+        
+        .list-group-item {
+            border: none;
+            padding: 15px 0;
+            border-bottom: 1px solid #f1f1f1;
+        }
     </style>
 </head>
 
