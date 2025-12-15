@@ -49,6 +49,7 @@ if (isset($_GET['delete_id'])) {
 <html lang="en">
 
 <head>
+<head>
     <meta charset="UTF-8">
     <title>User Management</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -59,6 +60,7 @@ if (isset($_GET['delete_id'])) {
             background: #f8f9fa;
             font-family: 'Poppins', sans-serif;
         }
+
         .main-card {
             background: #fff;
             padding: 30px;
@@ -66,15 +68,18 @@ if (isset($_GET['delete_id'])) {
             border-radius: 25px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
         }
+
         h3 {
             color: #6c5ce7;
             font-weight: 700;
         }
+
         .table thead th {
             background-color: #6c5ce7;
             color: white;
             border: none;
         }
+
         .btn-pill {
             border-radius: 50px;
             font-weight: 600;
@@ -83,8 +88,8 @@ if (isset($_GET['delete_id'])) {
     </style>
 </head>
 
-<body style="background: #f8f9fa;">
-      <div class="container">
+<body>
+    <div class="container">
         <div class="main-card">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3>User Management</h3>
