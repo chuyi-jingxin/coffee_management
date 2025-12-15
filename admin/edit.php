@@ -117,3 +117,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Dòng này chỉ chạy khi vào trang (GET) hoặc khi POST bị lỗi
 mysqli_close($con);
 ?>
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 30px;
+            max-width: 600px;
+        }
+
+        img.current-img {
+            max-width: 120px;
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
