@@ -54,4 +54,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $status = trim($_POST['status']);
     $imagePath = '';
 
+    // Xử lý upload ảnh
+    if (!empty($_FILES['image']['name'])) {
+        $targetDir = "../uploads/";
+
+        if (!is_dir($targetDir))
+            mkdir($targetDir, 0755, true);
+
+        $fileName = basename($_FILES['image']['name']); // uploads/12345_index.php
+
+        $targetFile = $targetDir . time() . "_" . $fileName;
+
+        $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        $allowTypes = ['jpg', 'jpeg', 'png'];
+
+        if (in_array($fileType, $allowTypes)) {
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
+                // NOTE: QUAN TRỌNG - Đường dẫn LƯU VÀO DATABASE
+                // bỏ dấu "../" đi. Chỉ lưu "uploads/ten_anh.jpg"
+                // Để khi hiển thị ở home.php, nó đường dẫn đúng.
+                $imagePath = "uploads/" . time() . "_" . $fileName;
+            }
+        }
+    }
+
 } 
