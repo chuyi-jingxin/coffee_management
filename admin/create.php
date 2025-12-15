@@ -78,4 +78,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-} 
+    // Thêm sản phẩm (Dùng Prepared Statement)
+    $query = "INSERT INTO products (name, price, status, image, created_at) 
+              VALUES (?, ?, ?, ?, NOW())";
+
+    $stmt = mysqli_prepare($con, $query);
+    // 'sdss' = string, double, string, string
+    mysqli_stmt_bind_param($stmt, "sdss", $name, $price, $status, $imagePath);
+
+    if (mysqli_stmt_execute($stmt)) {
+        // Thêm thành công
+        mysqli_stmt_close($stmt); // DỌN DẸP TRƯỚC
+        mysqli_close($con); // DỌN DẸP TRƯỚC
+
+        header("location: ../home.php");
+        exit();
+    } else {
+        $errorMessage = "Fail to add product: " . mysqli_error($con);
+        mysqli_stmt_close($stmt);
+    }
+}
