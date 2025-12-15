@@ -29,4 +29,11 @@ if (!isset($_SESSION['username']) && isset($_COOKIE['remember_me'])) {
 
     mysqli_stmt_close($stmt_find);
 }
-// 
+//
+
+/* CHECK LOGIN */
+if (!isset($_SESSION['username'])) {
+    header('location:auth/login.php');
+    exit();
+}
+
