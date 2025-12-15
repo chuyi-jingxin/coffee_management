@@ -73,10 +73,11 @@ $result_items = mysqli_query($con, $query_items);
 </head>
 
 <body>
-    <div class="container">
+    <div class="container py-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h3>Order Details 🧾 <small class="text-muted">#<?= $order_id ?></small></h3>
-            <a href="manage_orders.php" class="btn btn-secondary">Back to List</a>
+            <h3 style="font-weight: 700;">Order Details <span class="text-muted">#<?= $order_id ?></span></h3>
+            <a href="manage_orders.php" class="btn btn-secondary btn-pill px-4"><i class="fas fa-arrow-left"></i>
+                Back</a>
         </div>
 
         <div class="row">
