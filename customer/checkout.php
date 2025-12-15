@@ -73,11 +73,15 @@ foreach ($cart as $item) {
 
 <body>
     <div class="container">
-        <h2 class="mb-4">Checkout 📝</h2>
+        <div class="checkout-card">
+            <h2 class="mb-4 font-weight-bold" style="color: #6c5ce7;">Checkout</h2>
 
         <div class="row">
-            <div class="col-md-6">
-                <h4 class="text-info">Order Summary</h4>
+            <div class="col-md-6 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Your Cart</span>
+                        <span class="badge badge-secondary badge-pill"><?= count($cart) ?></span>
+                </h4>
                 <ul class="list-group mb-3">
                     <?php foreach ($cart as $item): ?>
                         <li class="list-group-item d-flex justify-content-between lh-condensed">
