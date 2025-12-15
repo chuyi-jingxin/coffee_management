@@ -68,11 +68,13 @@ $grand_total = 0;
 
 <body>
     <div class="container">
-        <h2 class="mb-4">Your Shopping Cart 🛒</h2>
+        <div class="cart-card">
+            <h2 class="mb-4 font-weight-bold" style="color: #333;">Shopping Cart</h2>
 
         <?php if (!empty($cart)): ?>
-            <table class="table table-bordered text-center">
-                <thead class="thead-light">
+            <div class="table-responsive">
+                    <table class="table table-hover text-center align-middle">
+                        <thead class="bg-light rounded">
                     <tr>
                         <th>Image</th>
                         <th>Name</th>
