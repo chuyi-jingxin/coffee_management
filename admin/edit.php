@@ -51,3 +51,18 @@ if ($id <= 0) {
     mysqli_close($con); // Dọn dẹp $con
     die("Invalid product ID.");
 }
+
+// Lấy dữ liệu hiện tại (Dùng Prepared Statement)
+$stmt_select = mysqli_prepare($con, "SELECT * FROM products WHERE id = ?"); // prepare
+mysqli_stmt_bind_param($stmt_select, "i", $id);
+mysqli_stmt_execute($stmt_select);
+$result = mysqli_stmt_get_result($stmt_select);
+$product = mysqli_fetch_assoc($result);//to array
+
+// Dọn dẹp $stmt_select ngay sau khi dùng xong
+mysqli_stmt_close($stmt_select);
+
+if (!$product) {
+    mysqli_close($con); // Dọn dẹp $con
+    die("Product not found.");
+}
