@@ -75,11 +75,10 @@ if (isset($_GET['delete_id'])) {
             color: white;
             border: none;
         }
-        .container {
-            margin-top: 30px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
+        .btn-pill {
+            border-radius: 50px;
+            font-weight: 600;
+            padding: 5px 15px;
         }
     </style>
 </head>
