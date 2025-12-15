@@ -272,6 +272,21 @@ $result = mysqli_query($con, $query); // Object - False
                 </div>
             </div>
         <?php endif; ?>
+
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <div>
+                <h3 style="font-weight: 700; color: #2d3436;">Menu List ☕</h3>
+                <p class="text-muted mb-0">Choose your favorite drink</p>
+            </div>
+
+            <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
+                <div class="btn-group shadow-sm" style="border-radius: 50px; overflow: hidden;">
+                    <a href="admin/manage_orders.php" class="btn btn-info px-3">Orders</a>
+                    <a href="admin/manage_users.php" class="btn btn-primary px-3">Users</a>
+                    <a href="admin/create.php" class="btn btn-success px-3">New Product</a>
+                </div>
+            <?php endif; ?>
+        </div>
         
 </body>
 
