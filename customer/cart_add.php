@@ -46,7 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ];
         }
 
-        
+        // 5. Chuyển hướng sang trang xem giỏ hàng
+        header("location: cart.php");
+        exit();
     } else {
         
     }
