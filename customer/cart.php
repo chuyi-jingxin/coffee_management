@@ -76,10 +76,10 @@ $grand_total = 0;
                     <table class="table table-hover text-center align-middle">
                         <thead class="bg-light rounded">
                     <tr>
-                        <th>Image</th>
+                        <th>Product</th>
                         <th>Name</th>
                         <th>Price</th>
-                        <th>Quantity</th>
+                        <th>Qty</th>
                         <th>Total</th>
                         <th>Action</th>
                     </tr>
