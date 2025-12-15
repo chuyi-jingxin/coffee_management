@@ -39,10 +39,7 @@
 
             </form>
 
-            <div class="mt-4 text-muted" style="font-size: 0.9rem;">
-                Already have an account?
-                <a href="login.php" class="auth-link ml-1">Login Here</a>
-            </div>
+            
 
         </div>
     </div>
