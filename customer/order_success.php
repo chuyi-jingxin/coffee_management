@@ -47,14 +47,16 @@ $order_id = $_GET['orderid'] ?? 0;
 </head>
 
 <body>
-    <div class="container">
+    <div class="success-card">
         <div class="success-icon">🎉</div>
-        <h2 class="text-success mt-3">Order Placed Successfully!</h2>
-        <p class="lead">Thank you for your purchase.</p>
-        <p>Your Order ID is: <strong>#<?= htmlspecialchars($order_id) ?></strong></p>
-        <hr>
-        <p>We will contact you soon to confirm your order.</p>
-        <a href="../home.php" class="btn btn-primary">Back to Home</a>
+        <h2 class="font-weight-bold text-success">Order Successful!</h2>
+        <p class="text-muted mt-3">Thank you for your purchase.</p>
+        <div class="alert alert-light border rounded-pill my-4">
+            Order ID: <strong>#<?= htmlspecialchars($order_id) ?></strong>
+        </div>
+        <p class="small text-muted mb-4">We will contact you soon to confirm.</p>
+        <a href="../home.php" class="btn btn-primary btn-pill shadow-sm" style="background: #6c5ce7; border: none;">Back
+            to Home</a>
     </div>
 </body>
 
