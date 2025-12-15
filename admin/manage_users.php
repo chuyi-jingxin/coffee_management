@@ -44,11 +44,10 @@ if (isset($_GET['delete_id'])) {
     exit();
 }
 ?>
-// LY
+
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
 <head>
     <meta charset="UTF-8">
     <title>User Management</title>

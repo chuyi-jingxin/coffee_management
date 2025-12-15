@@ -29,18 +29,18 @@ if (isset($_POST['update_status'])) {
 $query = "SELECT * FROM orders ORDER BY created_at DESC";
 $result = mysqli_query($con, $query);
 ?>
-// LY
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>Order Management</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-         body {
+        body {
             background: #f8f9fa;
             font-family: 'Poppins', sans-serif;
         }
@@ -87,13 +87,14 @@ $result = mysqli_query($con, $query);
         <div class="main-card">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3>Order Management</h3>
-                <a href="../home.php" class="btn btn-secondary btn-pill"><i class="fas fa-arrow-left mr-1"></i> Dashboard</a>
+                <a href="../home.php" class="btn btn-secondary btn-pill"><i class="fas fa-arrow-left mr-1"></i>
+                    Dashboard</a>
             </div>
 
-        <?php if (isset($_GET['msg']) && $_GET['msg'] == 'updated')
-            echo '<div class="alert alert-success">Order status updated!</div>'; ?>
+            <?php if (isset($_GET['msg']) && $_GET['msg'] == 'updated')
+                echo '<div class="alert alert-success rounded-pill text-center">Order status updated successfully!</div>'; ?>
 
-        <div class="table-responsive">
+            <div class="table-responsive">
                 <table class="table table-hover text-center">
                     <thead>
                         <tr>
@@ -105,56 +106,60 @@ $result = mysqli_query($con, $query);
                             <th>Action</th>
                         </tr>
                     </thead>
-            <tbody>
-                <?php while ($row = mysqli_fetch_assoc($result)): ?>
-                    <tr>
-                        <td><strong>#<?= $row['id'] ?></strong></td>
-                        <td class="text-left">
-                            <?= htmlspecialchars($row['customer_name']) ?><br>
-                            <small class="text-muted"><?= htmlspecialchars($row['phone']) ?></small>
-                        </td>
-                        <td class="text-danger font-weight-bold">
-                            <?= number_format($row['total_amount'], 0, ',', '.') ?>
-                        </td>
-                        <td><?= date('d/m/Y H:i', strtotime($row['created_at'])) ?></td>
-
-                        <td>
-                            <?php
-                            $badgeColor = 'secondary';
-                            if ($row['status'] == 'Pending')
-                                $badgeColor = 'warning';   // Màu vàng
-                            if ($row['status'] == 'Completed')
-                                $badgeColor = 'success'; // Màu xanh
-                            if ($row['status'] == 'Cancelled')
-                                $badgeColor = 'danger';  // Màu đỏ
-                            ?>
-                            <span class="badge badge-<?= $badgeColor ?> p-2"><?= $row['status'] ?></span>
-                        </td>
-
-                        <td>
-                           <a href="order_detail.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-info btn-pill">
+                    <tbody>
+                        <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                            <tr>
+                                <td><strong>#<?= $row['id'] ?></strong></td>
+                                <td class="text-left">
+                                    <span class="font-weight-bold"><?= htmlspecialchars($row['customer_name']) ?></span><br>
+                                    <small class="text-muted"><i class="fas fa-phone-alt"></i>
+                                        <?= htmlspecialchars($row['phone']) ?></small>
+                                </td>
+                                <td class="text-danger font-weight-bold">
+                                    <?= number_format($row['total_amount'], 0, ',', '.') ?>
+                                </td>
+                                <td><?= date('d/m/Y H:i', strtotime($row['created_at'])) ?></td>
+                                <td>
+                                    <?php
+                                    $badgeColor = 'secondary';
+                                    if ($row['status'] == 'Pending')
+                                        $badgeColor = 'warning';
+                                    if ($row['status'] == 'Completed')
+                                        $badgeColor = 'success';
+                                    if ($row['status'] == 'Cancelled')
+                                        $badgeColor = 'danger';
+                                    ?>
+                                    <span
+                                        class="badge badge-<?= $badgeColor ?> badge-pill-custom"><?= $row['status'] ?></span>
+                                </td>
+                                <td>
+                                    <a href="order_detail.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-info btn-pill">
                                         <i class="fas fa-eye"></i> View
-                            </a>
-                            <?php if ($row['status'] == 'Pending'): ?>
-                                 <span class="mx-1 text-muted">|</span>
+                                    </a>
+                                    <?php if ($row['status'] == 'Pending'): ?>
+                                        <span class="mx-1 text-muted">|</span>
                                         <form method="POST" style="display:inline-block;">
                                             <input type="hidden" name="order_id" value="<?= $row['id'] ?>">
                                             <input type="hidden" name="update_status" value="1">
-                                            <button type="submit" name="status" value="Completed" class="btn btn-sm btn-success btn-pill" onclick="return confirm('Complete this order?');">✔</button>
+                                            <button type="submit" name="status" value="Completed"
+                                                class="btn btn-sm btn-success btn-pill"
+                                                onclick="return confirm('Complete this order?');">✔</button>
                                         </form>
-                                        
-                                <form method="POST" style="display:inline-block;">
-                                    <input type="hidden" name="order_id" value="<?= $row['id'] ?>">
-                                    <input type="hidden" name="update_status" value="1">
-                                    <button type="submit" name="status" value="Cancelled" class="btn btn-sm btn-danger"
-                                        onclick="return confirm('Are you sure to CANCEL this order?');">✘</button>
-                                </form>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
+                                        <form method="POST" style="display:inline-block;">
+                                            <input type="hidden" name="order_id" value="<?= $row['id'] ?>">
+                                            <input type="hidden" name="update_status" value="1">
+                                            <button type="submit" name="status" value="Cancelled"
+                                                class="btn btn-sm btn-danger btn-pill"
+                                                onclick="return confirm('Cancel this order?');">✘</button>
+                                        </form>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </body>
 

@@ -27,18 +27,18 @@ $query_items = "SELECT oi.*, p.name as product_name, p.image
                 WHERE oi.order_id = $order_id";
 $result_items = mysqli_query($con, $query_items);
 ?>
-// LY
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Order Details #<?= $order_id ?></title>
+    <title>Order Details</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-       body {
+        body {
             background: #f8f9fa;
             font-family: 'Poppins', sans-serif;
         }
@@ -66,6 +66,7 @@ $result_items = mysqli_query($con, $query_items);
             object-fit: cover;
             border-radius: 15px;
         }
+
         .btn-pill {
             border-radius: 50px;
         }
@@ -106,7 +107,7 @@ $result_items = mysqli_query($con, $query_items);
                                     <th>Total</th>
                                 </tr>
                             </thead>
-                    <tbody>
+                            <tbody>
                                 <?php while ($item = mysqli_fetch_assoc($result_items)): ?>
                                     <tr>
                                         <td>
@@ -122,8 +123,7 @@ $result_items = mysqli_query($con, $query_items);
                                             <?= number_format($item['price'] * $item['quantity']) ?></td>
                                     </tr>
                                 <?php endwhile; ?>
-
-                        <tr class="border-top">
+                                <tr class="border-top">
                                     <td colspan="3" class="text-right"><strong>Grand Total:</strong></td>
                                     <td class="text-danger font-weight-bold" style="font-size: 1.2rem;">
                                         <?= number_format($order['total_amount'], 0, ',', '.') ?> VND
@@ -135,6 +135,7 @@ $result_items = mysqli_query($con, $query_items);
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 </body>
+
 </html>
