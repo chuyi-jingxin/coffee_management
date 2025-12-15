@@ -27,7 +27,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $total_amount += $item['price'] * $item['quantity'];
     }
 
+    // 2. TẠO ĐƠN HÀNG (INSERT vào bảng orders)
+    $stmt = mysqli_prepare($con, "INSERT INTO orders (user_id, customer_name, phone, address, total_amount, status, created_at) VALUES (?, ?, ?, ?, ?, 'Pending', NOW())");
     
+    // 'isssd' -> integer, string, string, string, double
+    mysqli_stmt_bind_param($stmt, "isssd", $user_id, $name, $phone, $address, $total_amount);
+    
+    if (mysqli_stmt_execute($stmt)) {
+        
+        
+        }
         
 
     } else {
