@@ -77,6 +77,14 @@ $result = mysqli_query($con, $query); // Object - False
             /* Bóng đổ siêu nhẹ */
             padding: 15px 0;
         }
+
+        .brand-text {
+            font-weight: 700;
+            color: #6c5ce7;
+            /* Tím pastel đậm */
+            font-size: 1.6rem;
+            letter-spacing: -0.5px;
+        }
         
     </style>
 </head>
