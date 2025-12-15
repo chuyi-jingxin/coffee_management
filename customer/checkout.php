@@ -118,9 +118,9 @@ foreach ($cart as $item) {
                     </div>
 
                     <div class="form-group">
-                        <label>Shipping Address:</label>
-                        <textarea name="address" class="form-control" rows="3" required
-                            placeholder="Your delivery address..."></textarea>
+                            <label class="ml-2 font-weight-bold text-muted">Address</label>
+                            <textarea name="address" class="form-control" rows="3" style="border-radius: 20px;" required
+                                placeholder="Ex: 144 Xuan Thuy, Cau Giay..."></textarea>
                     </div>
 
                     <hr class="mb-4">
