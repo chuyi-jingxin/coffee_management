@@ -102,8 +102,8 @@ foreach ($cart as $item) {
                 </ul>
             </div>
 
-            <div class="col-md-6">
-                <h4 class="text-primary">Delivery Information</h4>
+            <div class="col-md-6 order-md-1">
+                <h4 class="mb-3">Delivery Address</h4>
 
                 <form action="place_order.php" method="POST">
                     <div class="form-group">
