@@ -16,6 +16,14 @@ $order_id = $_GET['orderid'] ?? 0;
             background: #f8f9fa;
         }
 
+        .container {
+            background: #fff;
+            padding: 50px;
+            margin-top: 50px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
         
     </style>
 </head>
