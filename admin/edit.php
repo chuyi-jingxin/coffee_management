@@ -126,7 +126,6 @@ mysqli_close($con);
     <title>Edit Product</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
     <style>
         body {
             background: #f8f9fa;
@@ -174,7 +173,6 @@ mysqli_close($con);
             margin-bottom: 30px;
         }
     </style>
-    
 </head>
 
 <body>
@@ -220,6 +218,5 @@ mysqli_close($con);
         </div>
     </div>
 </body>
-
 
 </html>
