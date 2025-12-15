@@ -345,6 +345,11 @@ $result = mysqli_query($con, $query); // Object - False
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 
    
+    <script>
+        if (window.location.search.length >= 0) {
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    </script>
 
 </body>
 
