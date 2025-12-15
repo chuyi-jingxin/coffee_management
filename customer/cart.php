@@ -100,9 +100,12 @@ $grand_total = 0;
                             <td class="align-middle">x<?= $item['quantity'] ?></td>
                             <td class="align-middle font-weight-bold" style="color: #6c5ce7;">
                                 <?= number_format($line_total, 0, ',', '.') ?></td>
-                            <td>
-                                <a href="cart.php?action=remove&id=<?= $id ?>" class="btn btn-sm btn-danger"
-                                    onclick="return confirm('Remove this item?');">Remove ❌</a>
+                            <td class="align-middle">
+                                <a href="cart.php?action=remove&id=<?= $id ?>"
+                                    class="btn btn-sm btn-outline-danger btn-pill"
+                                    onclick="return confirm('Remove this item?');">
+                                    <i class="fas fa-trash"></i>
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
