@@ -43,11 +43,13 @@ $result_items = mysqli_query($con, $query_items);
             font-family: 'Poppins', sans-serif;
         }
 
-        .container {
+        .detail-card {
             background: #fff;
-            padding: 30px;
-            margin-top: 30px;
-            border-radius: 8px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            height: 100%;
+            border: none;
         }
 
         .thumb-img {
