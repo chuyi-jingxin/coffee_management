@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = trim($_POST['customer_name']);
     $phone = trim($_POST['phone']);
     $address = trim($_POST['address']);
-    
+
     // Tính lại tổng tiền (Backend phải tự tính lại để bảo mật, không tin client)
     $total_amount = 0;
     foreach ($cart as $item) {
@@ -29,10 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 2. TẠO ĐƠN HÀNG (INSERT vào bảng orders)
     $stmt = mysqli_prepare($con, "INSERT INTO orders (user_id, customer_name, phone, address, total_amount, status, created_at) VALUES (?, ?, ?, ?, ?, 'Pending', NOW())");
-    
+
     // 'isssd' -> integer, string, string, string, double
     mysqli_stmt_bind_param($stmt, "isssd", $user_id, $name, $phone, $address, $total_amount);
-    
+
     if (mysqli_stmt_execute($stmt)) {
         // Lấy ID của đơn hàng vừa tạo (Order ID)
         $order_id = mysqli_insert_id($con);
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         foreach ($cart as $product_id => $item) {
             $price = $item['price'];
             $qty = $item['quantity'];
-            
+
             // 'iiid' -> int, int, int, double
             mysqli_stmt_bind_param($stmt_item, "iiid", $order_id, $product_id, $qty, $price);
             mysqli_stmt_execute($stmt_item);
