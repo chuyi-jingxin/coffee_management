@@ -11,3 +11,11 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
 
 $order_id = (int)($_GET['id'] ?? 0);
 
+// 2. LẤY THÔNG TIN ĐƠN HÀNG (Người mua, địa chỉ...)
+$stmt = mysqli_prepare($con, "SELECT * FROM orders WHERE id = ?");
+mysqli_stmt_bind_param($stmt, "i", $order_id);
+mysqli_stmt_execute($stmt);
+$order = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
+
+if (!$order) die("Order not found");
+
