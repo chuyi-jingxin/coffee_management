@@ -72,7 +72,36 @@ $result = mysqli_query($con, $query);
                     <th>Action</th>
                 </tr>
             </thead>
-            
+            <tbody>
+                <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                    <tr>
+                        <td><strong>#<?= $row['id'] ?></strong></td>
+                        <td class="text-left">
+                            <?= htmlspecialchars($row['customer_name']) ?><br>
+                            <small class="text-muted"><?= htmlspecialchars($row['phone']) ?></small>
+                        </td>
+                        <td class="text-danger font-weight-bold">
+                            <?= number_format($row['total_amount'], 0, ',', '.') ?>
+                        </td>
+                        <td><?= date('d/m/Y H:i', strtotime($row['created_at'])) ?></td>
+
+                        <td>
+                            <?php
+                            $badgeColor = 'secondary';
+                            if ($row['status'] == 'Pending')
+                                $badgeColor = 'warning';   // Màu vàng
+                            if ($row['status'] == 'Completed')
+                                $badgeColor = 'success'; // Màu xanh
+                            if ($row['status'] == 'Cancelled')
+                                $badgeColor = 'danger';  // Màu đỏ
+                            ?>
+                            <span class="badge badge-<?= $badgeColor ?> p-2"><?= $row['status'] ?></span>
+                        </td>
+
+                        
+                    </tr>
+                <?php endwhile; ?>
+            </tbody>
         </table>
     </div>
 </body>
