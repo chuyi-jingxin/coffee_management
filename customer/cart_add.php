@@ -34,17 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Nếu sản phẩm đã có trong giỏ -> Cộng dồn số lượng
-        if (isset($_SESSION['cart'][$id])) {
-            $_SESSION['cart'][$id]['quantity'] += $quantity;
-        } else {
-            // Nếu chưa có -> Thêm mới vào giỏ
-            $_SESSION['cart'][$id] = [
-                'name' => $product['name'],
-                'price' => $product['price'],
-                'image' => $product['image'],
-                'quantity' => $quantity
-            ];
-        }
+        
 
         // 5. Chuyển hướng sang trang xem giỏ hàng
         header("location: cart.php");
