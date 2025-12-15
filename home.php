@@ -246,6 +246,33 @@ $result = mysqli_query($con, $query); // Object - False
             </div>
         </div>
     </nav>
+
+    <div class="container py-5">
+
+        <?php if (isset($_GET['msg'])): ?>
+            <div class="row mb-4">
+                <div class="col-12">
+                    <?php
+                    $alertClass = ($_GET['msg'] == 'deleted' || $_GET['msg'] == 'updated') ? 'alert-success' : 'alert-danger';
+                    $msgText = 'Action completed.';
+                    if ($_GET['msg'] == 'deleted')
+                        $msgText = 'Item deleted successfully!';
+                    if ($_GET['msg'] == 'error')
+                        $msgText = 'Something went wrong.';
+                    if ($_GET['msg'] == 'no_permission') {
+                        $msgText = 'Access Denied!';
+                        $alertClass = 'alert-warning';
+                    }
+                    ?>
+                    <div class="alert <?= $alertClass ?> alert-dismissible fade show shadow-sm"
+                        style="border-radius: 15px;">
+                        <?= $msgText ?>
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+        
 </body>
 
 </html>
