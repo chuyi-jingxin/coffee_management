@@ -308,7 +308,24 @@ $result = mysqli_query($con, $query); // Object - False
                                     <span class="product-price"><?= number_format($row['price'], 0, ',', '.') ?>đ</span>
                                 </div>
 
-                                
+                                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
+                                    <div class="d-flex justify-content-between mt-auto">
+                                        <a href="admin/edit.php?id=<?= $row['id'] ?>"
+                                            class="btn btn-sm btn-pastel-edit flex-fill mr-2 shadow-sm">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                        <a href="admin/delete.php?id=<?= $row['id'] ?>"
+                                            class="btn btn-sm btn-pastel-del flex-fill ml-2 shadow-sm"
+                                            onclick="return confirm('Delete this product?');">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </div>
+                                <?php else: ?>
+                                    <a href="customer/product_detail.php?id=<?= $row['id'] ?>"
+                                        class="btn btn-pastel-view shadow-sm">
+                                        View Details <i class="fas fa-arrow-right ml-2"></i>
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
