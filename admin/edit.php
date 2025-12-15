@@ -93,4 +93,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $image = "uploads/" . time() . '_' . $fileName;
         }
     }
+
+    // Cập nhật (Dùng Prepared Statement)
+    $sql_update = "UPDATE products SET name=?, price=?, status=?, image=? WHERE id=?";
+    $stmt_update = mysqli_prepare($con, $sql_update);
+    // 'sdssi' = string, double, string, string, integer
+    mysqli_stmt_bind_param($stmt_update, "sdssi", $name, $price, $status, $image, $id);
+
+    if (mysqli_stmt_execute($stmt_update)) {
+        // Cập nhật thành công
+        mysqli_stmt_close($stmt_update); // DỌN DẸP TRƯỚC
+        mysqli_close($con);              // DỌN DẸP TRƯỚC
+
+        header("Location: ../home.php");
+        exit();
+    } else {
+        // Cập nhật thất bại
+        echo "Lỗi: " . mysqli_error($con);
+        mysqli_stmt_close($stmt_update); // Dọn dẹp $stmt_update
+    }
 }
