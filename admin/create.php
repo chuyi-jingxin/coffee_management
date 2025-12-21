@@ -120,7 +120,7 @@ mysqli_close($con);
             padding: 40px;
             border-radius: 25px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            max-width: 601px;
+            max-width: 600px;
             margin: 50px auto;
         }
 
