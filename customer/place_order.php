@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = trim($_POST['phone']);
     $address = trim($_POST['address']);
 
-    // Tính lại tổng tiền (Backend phải tự tính lại để bảo mật, không tin client)
+    // Tính lại tổng tiền (Backend phải tự tính lại để bảo mật)
     $total_amount = 0;
     foreach ($cart as $item) {
         $total_amount += $item['price'] * $item['quantity'];
@@ -47,7 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $price = $item['price'];
             $qty = $item['quantity'];
 
-            // 'iiid' -> int, int, int, double
             mysqli_stmt_bind_param($stmt_item, "iiid", $order_id, $product_id, $qty, $price);
             mysqli_stmt_execute($stmt_item);
         }
