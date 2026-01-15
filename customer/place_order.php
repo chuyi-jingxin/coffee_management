@@ -27,15 +27,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $total_amount += $item['price'] * $item['quantity'];
     }
 
+
     // 2. TẠO ĐƠN HÀNG (INSERT vào bảng orders)
     $stmt = mysqli_prepare($con, "INSERT INTO orders (user_id, customer_name, phone, address, total_amount, status, created_at) VALUES (?, ?, ?, ?, ?, 'Pending', NOW())");
-
-    // 'isssd' -> integer, string, string, string, double
     mysqli_stmt_bind_param($stmt, "isssd", $user_id, $name, $phone, $address, $total_amount);
 
     if (mysqli_stmt_execute($stmt)) {
         // Lấy ID của đơn hàng vừa tạo (Order ID)
-        $order_id = mysqli_insert_id($con);
+        $order_id = mysqli_insert_id($con); // id tự động tăng từ id gần nhất
         mysqli_stmt_close($stmt);
 
         // 3. LƯU CHI TIẾT ĐƠN HÀNG (INSERT vào bảng order_items)
@@ -64,5 +63,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 mysqli_close($con);
-// Lưu Order => Lưu Items => xóa giỏ => Chuyển hướng
+// Lưu Order => Lưu Order_Items => xóa giỏ => Chuyển hướng
 ?>
