@@ -2,7 +2,6 @@
 session_start();
 require_once '../config/db.php';
 
-// AUTO LOGIN 
 if (!isset($_SESSION['username']) && isset($_COOKIE['remember_me'])) {
     $token = $_COOKIE['remember_me'];
     $stmt_find = mysqli_prepare(
@@ -22,7 +21,6 @@ if (!isset($_SESSION['username']) && isset($_COOKIE['remember_me'])) {
     mysqli_stmt_close($stmt_find);
 }
 
-// KIỂM TRA ĐĂNG NHẬP
 if (!isset($_SESSION['username'])) {
     header('location:../auth/login.php');
     exit();
@@ -30,6 +28,7 @@ if (!isset($_SESSION['username'])) {
 
 // LẤY ID SẢN PHẨM
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+$id = (int) ($_GET['id'] ?? 0);
 
 // TRUY VẤN SẢN PHẨM
 $stmt = mysqli_prepare($con, "SELECT * FROM products WHERE id = ?");
