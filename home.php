@@ -46,38 +46,10 @@ if (isset($_SESSION['role']) && $_SESSION['role'] != 'admin') {
         }
     }
 }
-/* =====  XỬ LÝ TÌM KIẾM & LỌC ===== */
-// Mặc định câu query có "WHERE 1=1" để dễ nối chuỗi
-$sql = "SELECT * FROM products WHERE 1=1";
-
-// 1. Nhận từ khóa tìm kiếm
-$keyword = '';
-if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
-    $keyword = trim($_GET['keyword']);
-    $safe_keyword = mysqli_real_escape_string($con, $keyword);
-    $sql .= " AND name LIKE '%$safe_keyword%'";
-}
-
-// 2. Nhận khoảng giá
-$price_range = '';
-if (isset($_GET['price_range']) && !empty($_GET['price_range'])) {
-    $price_range = $_GET['price_range'];
-    switch ($price_range) {
-        case 'under_30':
-            $sql .= " AND price < 30000";
-            break;
-        case '30_60':
-            $sql .= " AND price BETWEEN 30000 AND 60000";
-            break;
-        case 'over_60':
-            $sql .= " AND price > 60000";
-            break;
-    }
-}
 
 /* LẤY DANH SÁCH SẢN PHẨM */
 $query = "SELECT * FROM products ORDER BY id DESC";
-$result = mysqli_query($con, $query); 
+$result = mysqli_query($con, $query); // Object - False
 ?>
 
 <!DOCTYPE html>
@@ -245,24 +217,6 @@ $result = mysqli_query($con, $query);
         .btn-pastel-cart:hover {
             background-color: #fdcb6e;
         }
-        /* CSS CHO THANH TÌM KIẾM */
-        .search-container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-            margin-bottom: 40px;
-        }
-        .form-control-custom {
-            border-radius: 50px;
-            border: 1px solid #eee;
-            padding: 10px 20px;
-            height: auto;
-        }
-        .form-control-custom:focus {
-            box-shadow: none;
-            border-color: #6c5ce7;
-        }
     </style>
 </head>
 
@@ -332,32 +286,6 @@ $result = mysqli_query($con, $query);
                     <a href="admin/create.php" class="btn btn-success px-3">New Product</a>
                 </div>
             <?php endif; ?>
-        </div>
-        
-        <div class="search-container">
-            <form action="home.php" method="GET" class="row">
-                <div class="col-md-5 mb-2">
-                    <input type="text" name="keyword" class="form-control form-control-custom" 
-                           placeholder="🔍 Search for drink name..." 
-                           value="<?= htmlspecialchars($keyword) ?>">
-                </div>
-                <div class="col-md-4 mb-2">
-                    <select name="price_range" class="form-control form-control-custom">
-                        <option value="">-- All Prices --</option>
-                        <option value="under_30" <?= $price_range == 'under_30' ? 'selected' : '' ?>>Under 30.000đ</option>
-                        <option value="30_60" <?= $price_range == '30_60' ? 'selected' : '' ?>>30k - 60k</option>
-                        <option value="over_60" <?= $price_range == 'over_60' ? 'selected' : '' ?>>Over 60.000đ</option>
-                    </select>
-                </div>
-                <div class="col-md-3 mb-2">
-                    <button type="submit" class="btn btn-primary btn-block shadow-sm" style="border-radius: 50px; background-color: #6c5ce7; border-color: #6c5ce7;">
-                        Filter
-                    </button>
-                    <?php if($keyword || $price_range): ?>
-                         <a href="home.php" class="btn btn-light btn-block mt-2 text-muted" style="border-radius: 50px;">Clear Filter</a>
-                    <?php endif; ?>
-                </div>
-            </form>
         </div>
 
         <div class="row">
