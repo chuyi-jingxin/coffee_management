@@ -333,6 +333,32 @@ $result = mysqli_query($con, $query); // Object - False
                 </div>
             <?php endif; ?>
         </div>
+        
+        <div class="search-container">
+            <form action="home.php" method="GET" class="row">
+                <div class="col-md-5 mb-2">
+                    <input type="text" name="keyword" class="form-control form-control-custom" 
+                           placeholder="🔍 Search for drink name..." 
+                           value="<?= htmlspecialchars($keyword) ?>">
+                </div>
+                <div class="col-md-4 mb-2">
+                    <select name="price_range" class="form-control form-control-custom">
+                        <option value="">-- All Prices --</option>
+                        <option value="under_30" <?= $price_range == 'under_30' ? 'selected' : '' ?>>Under 30.000đ</option>
+                        <option value="30_60" <?= $price_range == '30_60' ? 'selected' : '' ?>>30k - 60k</option>
+                        <option value="over_60" <?= $price_range == 'over_60' ? 'selected' : '' ?>>Over 60.000đ</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-2">
+                    <button type="submit" class="btn btn-primary btn-block shadow-sm" style="border-radius: 50px; background-color: #6c5ce7; border-color: #6c5ce7;">
+                        Filter
+                    </button>
+                    <?php if($keyword || $price_range): ?>
+                         <a href="home.php" class="btn btn-light btn-block mt-2 text-muted" style="border-radius: 50px;">Clear Filter</a>
+                    <?php endif; ?>
+                </div>
+            </form>
+        </div>
 
         <div class="row">
             <?php if (mysqli_num_rows($result) > 0): ?>
