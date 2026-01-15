@@ -46,6 +46,61 @@ if (isset($_SESSION['role']) && $_SESSION['role'] != 'admin') {
         }
     }
 }
+/* QUICK ADD TO CART (Customer) */
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quick_add_to_cart'])) {
+
+    // chỉ cho customer (không cho admin)
+    if (!isset($_SESSION['role']) || $_SESSION['role'] === 'admin') {
+        header('location:home.php?msg=no_permission');
+        exit();
+    }
+
+    $product_id = isset($_POST['product_id']) ? (int) $_POST['product_id'] : 0;
+    $qty = 1;
+
+    if ($product_id > 0) {
+        // Lấy thông tin sản phẩm để add vào session cart (an toàn, tránh client sửa price/name)
+        $stmt_p = mysqli_prepare($con, "SELECT id, name, price, status, image FROM products WHERE id = ? LIMIT 1");
+        mysqli_stmt_bind_param($stmt_p, "i", $product_id);
+        mysqli_stmt_execute($stmt_p);
+        $res_p = mysqli_stmt_get_result($stmt_p);
+
+        if ($p = mysqli_fetch_assoc($res_p)) {
+            // Nếu hết hàng thì không add
+            if ($p['status'] !== 'In Stock') {
+                mysqli_stmt_close($stmt_p);
+                header("location:home.php?msg=out_of_stock");
+                exit();
+            }
+
+            // Khởi tạo cart nếu chưa có
+            if (!isset($_SESSION['cart']) || !is_array($_SESSION['cart'])) {
+                $_SESSION['cart'] = [];
+            }
+
+            // Add / tăng số lượng
+            if (isset($_SESSION['cart'][$product_id])) {
+                $_SESSION['cart'][$product_id]['quantity'] += $qty;
+            } else {
+                $_SESSION['cart'][$product_id] = [
+                    'name' => $p['name'],
+                    'price' => $p['price'],
+                    'image' => $p['image'],
+                    'quantity' => $qty
+                ];
+            }
+
+            mysqli_stmt_close($stmt_p);
+            header("location:home.php?msg=added");
+            exit();
+        }
+
+        mysqli_stmt_close($stmt_p);
+    }
+
+    header("location:home.php?msg=error");
+    exit();
+}
 
 /* LẤY DANH SÁCH SẢN PHẨM */
 $query = "SELECT * FROM products ORDER BY id DESC";
@@ -259,6 +314,14 @@ $result = mysqli_query($con, $query); // Object - False
                         $msgText = 'Item deleted successfully!';
                     if ($_GET['msg'] == 'error')
                         $msgText = 'Something went wrong.';
+                    if ($_GET['msg'] == 'added') {
+                        $msgText = 'Added to cart successfully!';
+                        $alertClass = 'alert-success';
+                        }
+                    if ($_GET['msg'] == 'out_of_stock') {
+                    $msgText = 'This item is out of stock.';
+                    $alertClass = 'alert-warning';
+                    }
                     if ($_GET['msg'] == 'no_permission') {
                         $msgText = 'Access Denied!';
                         $alertClass = 'alert-warning';
@@ -321,11 +384,25 @@ $result = mysqli_query($con, $query); // Object - False
                                         </a>
                                     </div>
                                 <?php else: ?>
-                                    <a href="customer/product_detail.php?id=<?= $row['id'] ?>"
-                                        class="btn btn-pastel-view shadow-sm">
-                                        View Details <i class="fas fa-arrow-right ml-2"></i>
-                                    </a>
-                                <?php endif; ?>
+    <div class="d-flex mt-auto" style="gap:10px;">
+        <a href="customer/product_detail.php?id=<?= $row['id'] ?>"
+            class="btn btn-pastel-view shadow-sm flex-fill">
+            View <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+
+        <form method="POST" action="" class="m-0">
+            <input type="hidden" name="quick_add_to_cart" value="1">
+            <input type="hidden" name="product_id" value="<?= (int)$row['id'] ?>">
+
+            <button type="submit"
+                class="btn btn-pastel-cart shadow-sm"
+                <?= ($row['status'] !== 'In Stock') ? 'disabled title="Out of stock"' : '' ?>>
+                <i class="fas fa-plus"></i>
+            </button>
+        </form>
+    </div>
+<?php endif; ?>
+
                             </div>
                         </div>
                     </div>
