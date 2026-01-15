@@ -245,6 +245,24 @@ $result = mysqli_query($con, $query); // Object - False
         .btn-pastel-cart:hover {
             background-color: #fdcb6e;
         }
+        /* CSS CHO THANH TÌM KIẾM */
+        .search-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+        .form-control-custom {
+            border-radius: 50px;
+            border: 1px solid #eee;
+            padding: 10px 20px;
+            height: auto;
+        }
+        .form-control-custom:focus {
+            box-shadow: none;
+            border-color: #6c5ce7;
+        }
     </style>
 </head>
 
