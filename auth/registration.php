@@ -7,7 +7,7 @@ $pass = $_POST['password'];
 
 // 1. KIỂM TRA USERNAME (Prepared Statement)
 $s = "SELECT id FROM users WHERE username = ?"; 
-$stmt = mysqli_prepare($con, $s); // chuẩn bị gửi khuôn mẫu cho csdl
+$stmt = mysqli_prepare($con, $s); // tạo khuôn mẫu câu lệnh SQL
 mysqli_stmt_bind_param($stmt, 's', $user); 
 mysqli_stmt_execute($stmt); // call db
 mysqli_stmt_store_result($stmt); 
