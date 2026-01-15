@@ -45,24 +45,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $imagePath = '';
 
     // Xử lý upload ảnh
-    if (!empty($_FILES['image']['name'])) {
+    if (!empty($_FILES['image']['name'])) { //biến siêu toàn cục chuyên chứa dữ liệu file
         $targetDir = "../uploads/";
 
         if (!is_dir($targetDir))
-            mkdir($targetDir, 0755, true);
+            mkdir($targetDir, 0755, true); // nếu thư mục chưa có thì tự tạo
 
-        $fileName = basename($_FILES['image']['name']); // uploads/12345_index.php
-
+        $fileName = basename($_FILES['image']['name']); // mục đích đặt tên file chống trùng lặp
         $targetFile = $targetDir . time() . "_" . $fileName;
 
         $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-        $allowTypes = ['jpg', 'jpeg', 'png'];
+        $allowTypes = ['jpg', 'jpeg', 'png']; // chỉ chấp nhận đuôi file như này
 
         if (in_array($fileType, $allowTypes)) {
             if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
-                // NOTE: QUAN TRỌNG - Đường dẫn LƯU VÀO DATABASE
-                // bỏ dấu "../" đi. Chỉ lưu "uploads/ten_anh.jpg"
-                // Để khi hiển thị ở home.php, nó đường dẫn đúng.
+                // Khi upload, file nằm tạm ở tmp_name
+                // Bỏ vào thư mục đã tạo
+                // Khi lưu vào DB, đường dẫn tính từ thư mục gốc home.php thì gọi uploads/anh.jpg 
                 $imagePath = "uploads/" . time() . "_" . $fileName;
             }
         }
@@ -147,7 +146,7 @@ mysqli_close($con);
                 <div class="alert alert-danger rounded-pill text-center"><?= $errorMessage ?></div>
             <?php endif; ?>
 
-            <form method="POST" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data"> 
                 <div class="form-group">
                     <label class="ml-2 font-weight-bold">Name</label>
                     <input type="text" name="name" class="form-control" required placeholder="Ex: Cappuccino">
