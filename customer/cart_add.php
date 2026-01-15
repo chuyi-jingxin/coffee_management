@@ -9,12 +9,12 @@ if (!isset($_SESSION['username'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // 1. Lấy dữ liệu từ form
+    // 1. Lấy dữ liệu từ form (product_detail)
     $id = (int)$_POST['product_id'];
     $quantity = (int)$_POST['quantity'];
 
     // 2. Validate
-    if ($id <= 0 || $quantity <= 0) {
+    if ($id <= 0 || $quantity <= 0) { // input validation
         die("Invalid product or quantity");
     }
 
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("location: cart.php");
         exit();
     } else {
-        die("Product not found");
+        die("Product not found"); // id gửi là đúng số nhưng có thể trong db không tồn tại
     }
 }
 ?>
