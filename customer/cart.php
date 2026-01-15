@@ -1,6 +1,6 @@
 <?php
 session_start();
-// NOTE: Trang này chủ yếu lấy dữ liệu từ Session, không cần DB cũng được, 
+// NOTE: Trang này chủ yếu lấy dữ liệu từ Session, không cần DB
 // nhưng cứ include để dùng Auto Login nếu cần sau này.
 require_once '../config/db.php';
 // giao diện cart
@@ -13,8 +13,8 @@ if (!isset($_SESSION['username'])) {
 // Xử lý Xóa sản phẩm khỏi giỏ (Nếu bấm nút Delete)
 if (isset($_GET['action']) && $_GET['action'] == 'remove' && isset($_GET['id'])) {
     $remove_id = (int) $_GET['id'];
-    unset($_SESSION['cart'][$remove_id]); // Xóa khỏi session
-    header('location: cart.php'); // Load lại trang
+    unset($_SESSION['cart'][$remove_id]); // Xóa khỏi session, hủy bỏ cặp key-value 
+    header('location: cart.php'); //clean url
     exit();
 }
 
