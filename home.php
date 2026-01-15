@@ -46,6 +46,34 @@ if (isset($_SESSION['role']) && $_SESSION['role'] != 'admin') {
         }
     }
 }
+/* =====  XỬ LÝ TÌM KIẾM & LỌC ===== */
+// Mặc định câu query có "WHERE 1=1" để dễ nối chuỗi
+$sql = "SELECT * FROM products WHERE 1=1";
+
+// 1. Nhận từ khóa tìm kiếm
+$keyword = '';
+if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
+    $keyword = trim($_GET['keyword']);
+    $safe_keyword = mysqli_real_escape_string($con, $keyword);
+    $sql .= " AND name LIKE '%$safe_keyword%'";
+}
+
+// 2. Nhận khoảng giá
+$price_range = '';
+if (isset($_GET['price_range']) && !empty($_GET['price_range'])) {
+    $price_range = $_GET['price_range'];
+    switch ($price_range) {
+        case 'under_30':
+            $sql .= " AND price < 30000";
+            break;
+        case '30_60':
+            $sql .= " AND price BETWEEN 30000 AND 60000";
+            break;
+        case 'over_60':
+            $sql .= " AND price > 60000";
+            break;
+    }
+}
 
 /* LẤY DANH SÁCH SẢN PHẨM */
 $query = "SELECT * FROM products ORDER BY id DESC";
