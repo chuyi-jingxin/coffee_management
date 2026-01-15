@@ -34,7 +34,7 @@ if ($_SESSION['role'] !== 'admin') {
     exit();
 }
 
-$id = isset($_GET['id']) ? (int) $_GET['id'] : 0; // ép kiểu để bảo mật (vì có thể sửa tay trên thanh địa chỉ)
+$id = (int) ($_GET['id'] ?? 0);
 
 if ($id > 0) {
     $query = "DELETE FROM products WHERE id = ?";
