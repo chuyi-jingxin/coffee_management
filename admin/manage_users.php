@@ -2,7 +2,6 @@
 session_start();
 require_once '../config/db.php';
 
-// ===== BẮT ĐẦU: AUTO LOGIN (TOKEN) =====
 if (!isset($_SESSION['username']) && isset($_COOKIE['remember_me'])) {
     $token = $_COOKIE['remember_me'];
     $stmt_find = mysqli_prepare(
@@ -24,18 +23,17 @@ if (!isset($_SESSION['username']) && isset($_COOKIE['remember_me'])) {
     mysqli_stmt_close($stmt_find);
 }
 
-// NOTE: BẢO VỆ: CHỈ ADMIN MỚI ĐƯỢC VÀO
 if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
     header('location:../home.php?msg=no_permission');
     exit();
 }
 
-/* 3. LẤY DANH SÁCH USER (Trừ chính mình) */
+/* LẤY DANH SÁCH USER (Trừ chính mình) */
 $my_id = $_SESSION['user_id'];
 $query = "SELECT * FROM users WHERE id != $my_id ORDER BY id DESC";
 $result = mysqli_query($con, $query);
 
-/* 4. XỬ LÝ XÓA USER */
+/* XỬ LÝ XÓA USER */
 if (isset($_GET['delete_id'])) {
     $del_id = (int) $_GET['delete_id'];
     mysqli_query($con, "DELETE FROM users WHERE id = $del_id");
