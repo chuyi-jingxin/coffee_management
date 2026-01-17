@@ -49,7 +49,7 @@ if (isset($_SESSION['role']) && $_SESSION['role'] != 'admin') {
 
 /* LẤY DANH SÁCH SẢN PHẨM */
 $query = "SELECT * FROM products ORDER BY id DESC";
-$result = mysqli_query($con, $query); // Object - False
+$result = mysqli_query($con, $query);
 ?>
 
 <!DOCTYPE html>
